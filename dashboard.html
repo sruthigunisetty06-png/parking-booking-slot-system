@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block content %}<h2>Welcome, {{session.user_name}}</h2><a class="btn" href="/book">Book a Slot</a>
+<h3>Your Bookings</h3><table><tr><th>Booking ID</th><th>Slot</th><th>Date</th><th>Time</th><th>Status</th></tr>
+{% for b in bookings %}<tr><td>{{b.booking_id}}</td><td>{{b.slot_number}}</td><td>{{b.booking_date}}</td><td>{{b.start_time}} - {{b.end_time}}</td><td>{{b.status}}</td></tr>{% else %}<tr><td colspan="5">No bookings yet.</td></tr>{% endfor %}</table>{% endblock %}

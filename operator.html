@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block content %}<h2>Operator Dashboard</h2>
+<div class="grid"><div class="formbox"><h3>Add Slot</h3><form method="post"><input type="hidden" name="action" value="add_slot">
+<input name="slot_number" placeholder="e.g. F-11" required><select name="vehicle_type"><option value="TWO_WHEELER">Two Wheeler</option><option value="FOUR_WHEELER">Four Wheeler</option></select><button>Add Slot</button></form></div>
+<div class="formbox"><h3>Record Entry</h3><form method="post"><input type="hidden" name="action" value="entry"><input name="booking_id" placeholder="Booking ID" required><button>Record Entry</button></form></div>
+<div class="formbox"><h3>Record Exit</h3><form method="post"><input type="hidden" name="action" value="exit"><input name="booking_id" placeholder="Booking ID" required><button>Record Exit & Charge</button></form></div></div>
+<h3>Parking Slots</h3><table><tr><th>Slot</th><th>Type</th><th>Status</th></tr>{% for s in slots %}<tr><td>{{s.slot_number}}</td><td>{{s.vehicle_type}}</td><td>{{s.status}}</td></tr>{% endfor %}</table>
+<h3>Bookings</h3><table><tr><th>ID</th><th>User</th><th>Vehicle</th><th>Slot</th><th>Date</th><th>Status</th><th>Entry</th><th>Exit</th><th>Charge</th></tr>
+{% for b in bookings %}<tr><td>{{b.booking_id}}</td><td>{{b.name}}</td><td>{{b.vehicle_number}}</td><td>{{b.slot_number}}</td><td>{{b.booking_date}}</td><td>{{b.status}}</td><td>{{b.entry_time or '-'}}</td><td>{{b.exit_time or '-'}}</td><td>₹{{'%.2f'|format(b.charge or 0)}}</td></tr>{% endfor %}</table>{% endblock %}

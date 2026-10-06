@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<div class="formbox"><h2>Book Parking Slot</h2>
+<form method="post"><label>Vehicle Type</label><select name="vehicle_type"><option value="TWO_WHEELER">Two Wheeler</option><option value="FOUR_WHEELER">Four Wheeler</option></select>
+<label>Date</label><input type="date" name="date" required><label>Start Time</label><input type="time" name="start_time" required>
+<label>End Time</label><input type="time" name="end_time" required><button>Find & Book Slot</button></form>
+<p class="hint">The system automatically selects the first non-conflicting slot for the selected vehicle type.</p></div>{% endblock %}
